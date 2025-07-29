@@ -1,0 +1,128 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+class Employee
+{
+    // Private Fields
+    private string name;
+    private int employeeId;
+    private double salary;
+    private string department;
+
+    // Static field for unique employee IDs
+    private static int nextId = 1;
+
+    // Constructor
+    public Employee(string name, double salary, string department)
+    {
+        SetName(name);
+        SetSalary(salary);
+        SetDepartment(department);
+
+        employeeId = nextId;
+        nextId++;
+    }
+
+    // SetName
+    public void SetName(string name)
+    {
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            this.name = name;
+        }
+        else
+        {
+            Console.WriteLine("Invalid name!");
+        }
+    }
+
+    // GetName
+    public string GetName()
+    {
+        return name;
+    }
+
+    // SetSalary
+    public void SetSalary(double salary)
+    {
+        if (salary > 0)
+        {
+            this.salary = salary;
+        }
+        else
+        {
+            Console.WriteLine("Salary must be positive!");
+        }
+    }
+
+    // GetSalary
+    public double GetSalary()
+    {
+        return salary;
+    }
+
+    // SetDepartment
+    public void SetDepartment(string department)
+    {
+        if (!string.IsNullOrWhiteSpace(department))
+        {
+            this.department = department;
+        }
+        else
+        {
+            Console.WriteLine("Invalid department!");
+        }
+    }
+
+    // GetDepartment
+    public string GetDepartment()
+    {
+        return department;
+    }
+
+    // GetEmployeeId
+    public int GetEmployeeId()
+    {
+        return employeeId;
+    }
+
+    // DisplayInfo
+    public void DisplayInfo()
+    {
+        Console.WriteLine(" Employee Info ");
+        Console.WriteLine($"ID        : {GetEmployeeId()}");
+        Console.WriteLine($"Name      : {GetName()}");
+        Console.WriteLine($"Salary    : {GetSalary()}");
+        Console.WriteLine($"Department: {GetDepartment()}");
+        Console.WriteLine("\n");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Creating first employee
+        Employee emp1 = new Employee("Basil Khan Rohela", 50000, "IT");
+        emp1.DisplayInfo();
+
+        // Creating second employee
+        Employee emp2 = new Employee("Sir Asif", 60000, "HR");
+        emp2.DisplayInfo();
+
+        // Changing data using setters
+        emp1.SetName("Abdul Raqeeb");
+        emp1.SetSalary(55000);
+        emp1.SetDepartment("Development");
+
+        // Display updated info
+        Console.WriteLine("After Updating Employee 1:\n");
+        emp1.DisplayInfo();
+
+       
+    }
+}
